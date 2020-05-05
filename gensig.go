@@ -89,5 +89,7 @@ func genSignature(filepath string) string {
 	fmt.Println("enc pub key:", hex.EncodeToString(sender.(*account.AccountV2).EncrKey.PublicKeyBytes()))
 	signature := sender.Sign([]byte(timestamp))
 	fmt.Println("signature:", hex.EncodeToString(signature))
+	fmt.Println(fmt.Sprintf("{\"requester\":\"%v\",\"timestamp\":\"%v\",\"signature\":\"%v\"}\n",sender.AccountNumber(), timestamp, hex.EncodeToString(signature)))
+
 	return hex.EncodeToString(signature)
 }
